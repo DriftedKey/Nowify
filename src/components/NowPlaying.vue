@@ -15,12 +15,7 @@
       <div class="now-playing__details">
         <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
         <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
-        <h3 class="now-playing__length" v-text="getTrackLength"></h3>
-        <h4 class="now-playing__percent" v-text="songProgressPercent"></h4>
-      </div>
-
-      <div class="now-playing__songProgress">
-        <div class="now-playing__progressBar"></div>
+        <h3 class="now-playing__length" v-text="timeSoFar+ '/' +getTrackLength"></h3>
       </div>
     </div>
     <div v-else class="now-playing" :class="getNowPlayingClass()">
@@ -32,11 +27,10 @@
 <script>
 import * as Vibrant from 'node-vibrant'
 import props from '@/utils/props.js'
-import { ref } from 'vue'
 
 var date = new Date()
 var initialTime = date.getMinutes * 60 + date.getSeconds
-var songProgressPercent = ref(0)
+var songProgressPercent = 0
 
 export default {
   name: 'NowPlaying',
@@ -75,10 +69,12 @@ export default {
         minutes + ":" + (seconds < 10 ? "0" : "") + seconds
         );
     },
-    keepTime() {
+    getTime() {
       var currentTime = date.getMinutes*60 + date.getSeconds;
-      songProgressPercent = Math.floor((currentTime-initialTime) / (this.player.trackLength*1000));
-      return songProgressPercent
+      var remainingMinutes = (currentTime-initialTime) % 60
+      var remainingSeconds = (currentTime - initialTime) - (60 * remainingMinutes)
+      var timeSoFar = String(remainingMinutes + ':' + remainingSeconds)
+      return timeSoFar
     }
   },
 
