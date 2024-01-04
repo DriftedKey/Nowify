@@ -35,7 +35,7 @@ import props from '@/utils/props.js'
 import { ref } from 'vue'
 
 var date = new Date()
-var initialTime = date.getMinutes*60 + date.getSeconds;
+var initialTime = date.getMinutes*60 + date.getSeconds
 var songProgressPercent = ref(0)
 
 export default {
@@ -78,6 +78,7 @@ export default {
     keepTime() { 
       var currentTime = date.getMinutes*60 + date.getSeconds;
       songProgressPercent = Math.floor((currentTime-initialTime)/(this.player.trackLength*1000));
+      return songProg
     }
   },
 
