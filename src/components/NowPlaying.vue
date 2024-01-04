@@ -61,7 +61,13 @@ export default {
       return this.player.trackArtists.join(', ')
     },
     getTrackLength() {
-      return String(this.player.duration_ms)
+      var minutes = Math.floor(trackLength / 60000);
+      var seconds = ((trackLength % 60000) / 1000).toFixed(0);
+      return (
+        seconds == 60 ?
+        (minutes+1) + ":00" :
+        minutes + ":" + (seconds < 10 ? "0" : "") + seconds
+        );
     },
   },
 
