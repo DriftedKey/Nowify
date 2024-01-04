@@ -43,6 +43,12 @@
     opacity: 0.8;
   }
 
+  &__duration_ms {
+    color: rgb(110, 102, 102);
+    text-align: center;
+    opacity: 0.8;
+  }
+
   &--active {
     align-items: center;
     justify-content: center;

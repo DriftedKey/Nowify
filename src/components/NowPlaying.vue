@@ -15,6 +15,11 @@
       <div class="now-playing__details">
         <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
         <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
+        <h3 class="now-playing__length" v-text="getTrackLength"></h3>
+      </div>
+      /** I messed with this from here */
+      <div class="songProgress">
+        <div class="now-playing__progressBar"></div>
       </div>
     </div>
     <div v-else class="now-playing" :class="getNowPlayingClass()">
@@ -161,7 +166,8 @@ export default {
         trackAlbum: {},
         trackArtists: [],
         trackId: '',
-        trackTitle: ''
+        trackTitle: '',
+        trackLength: []
       }
     },
 
@@ -233,7 +239,8 @@ export default {
         trackAlbum: {
           title: this.playerResponse.item.album.name,
           image: this.playerResponse.item.album.images[0].url
-        }
+        },
+        trackLength: this.playerResponse.item.track.duration_ms
       }
     },
 
