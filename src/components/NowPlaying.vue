@@ -59,7 +59,10 @@ export default {
      */
     getTrackArtists() {
       return this.player.trackArtists.join(', ')
-    }
+    },
+    getTrackLength() {
+      return this.player.duration_ms/1000
+    },
   },
 
   mounted() {
