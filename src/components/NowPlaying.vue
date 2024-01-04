@@ -16,7 +16,7 @@
         <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
         <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
         <h3 class="now-playing__length" v-text="getTrackLength"></h3>
-        <h4 class="song-progress__percent" v-text="songProgressPercent"></h4>
+        <h4 class="now-playing__percent" v-text="songProgressPercent"></h4>
       </div>
 
       <div class="now-playing__songProgress">
@@ -75,9 +75,9 @@ export default {
         minutes + ":" + (seconds < 10 ? "0" : "") + seconds
         );
     },
-    keepTime() { 
+    keepTime() {
       var currentTime = date.getMinutes*60 + date.getSeconds;
-      songProgressPercent = Math.floor((currentTime-initialTime)/(this.player.trackLength*1000));
+      songProgressPercent = Math.floor((currentTime-initialTime) / (this.player.trackLength*1000));
       return songProgressPercent
     }
   },
@@ -244,8 +244,8 @@ export default {
        */
       if (this.playerResponse.item?.id === this.playerData.trackId) {
         return
-      } else{
-        initialTime = (date.getMinutes*60) + date.getSeconds;
+      } else {
+        initialTime = date.getMinutes * 60 + date.getSeconds;
       }
 
       /**
@@ -262,7 +262,7 @@ export default {
           title: this.playerResponse.item.album.name,
           image: this.playerResponse.item.album.images[0].url
         },
-        trackLength: this.playerResponse.item.duration_ms,
+        trackLength: this.playerResponse.item.duration_ms
       }
     },
 
