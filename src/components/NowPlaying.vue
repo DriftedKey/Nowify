@@ -30,7 +30,8 @@
 
 <script>
 import * as Vibrant from 'node-vibrant'
-
+import { ProgressPlugin } from 'bootstrap-vue'
+Vue.use(ProgressPlugin)
 import props from '@/utils/props.js'
 
 export default {
