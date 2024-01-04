@@ -15,7 +15,7 @@
       <div class="now-playing__details">
         <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
         <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
-        <h3 class="now-playing__length" v-text="getTrackLength"></h3>
+        <b-progress :value="value" :max="getTrackLength" show-progress animated></b-progress>
       </div>
 
       <div class="now-playing__songProgress">
