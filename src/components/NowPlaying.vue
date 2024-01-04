@@ -70,6 +70,9 @@ export default {
         minutes + ":" + (seconds < 10 ? "0" : "") + seconds
         );
     },
+    resetTimer() {
+      var currentMillis = 0
+    }
   },
 
   mounted() {
@@ -233,6 +236,8 @@ export default {
        * one, we don't want to update the DOM yet.
        */
       if (this.playerResponse.item?.id === this.playerData.trackId) {
+        var currentTime = new Date(sec * 1000);
+        var songProgressPercent = Math.floor((currentTime-initialTime)/this.player.trackLength);
         return
       }
 
