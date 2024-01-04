@@ -46,10 +46,11 @@
   &__songProgress {
     width: 100%;
     background-color: #2b2b2b;
+    height: 30px;
     }
 
   &__length {
-    width: 1%;
+    width: songProgressPercent;
     height: 30px;
     background-color: hsl(0, 0%, 49%);
   }
