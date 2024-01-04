@@ -15,7 +15,7 @@
       <div class="now-playing__details">
         <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
         <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
-        <h3 class="now-playing__length" v-text="getTrackLength(trackLength)"></h3>
+        <h3 class="now-playing__length" v-text="getTrackLength"></h3>
       </div>
 
       <div class="now-playing__songProgress">
