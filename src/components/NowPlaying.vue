@@ -240,7 +240,7 @@ export default {
           title: this.playerResponse.item.album.name,
           image: this.playerResponse.item.album.images[0].url
         },
-        trackLength: this.playerResponse.item.track.duration_ms
+        trackLength: this.playerResponse.item.duration_ms
       }
     },
 
