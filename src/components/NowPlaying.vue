@@ -61,7 +61,7 @@ export default {
       return this.player.trackArtists.join(', ')
     },
     getTrackLength() {
-      millis = this.player.trackLength;
+      var millis = this.player.trackLength;
       var minutes = Math.floor(millis / 60000);
       var seconds = ((millis % 60000) / 1000).toFixed(0);
       return (
