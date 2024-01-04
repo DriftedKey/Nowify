@@ -16,6 +16,7 @@
         <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
         <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
         <h3 class="now-playing__length" v-text="getTrackLength"></h3>
+        <h4 class="song-progress__percent" v-text="songProgressPercent"></h4>
       </div>
 
       <div class="now-playing__songProgress">
@@ -30,8 +31,12 @@
 
 <script>
 import * as Vibrant from 'node-vibrant'
-
 import props from '@/utils/props.js'
+import { ref } from 'vue'
+
+var date = new Date();
+var initialTime = (date.getMinutes*60) + date.getSeconds;
+var songProgressPercent = ref(0);
 
 export default {
   name: 'NowPlaying',
@@ -70,8 +75,9 @@ export default {
         minutes + ":" + (seconds < 10 ? "0" : "") + seconds
         );
     },
-    resetTimer() {
-      var currentMillis = 0
+    keepTime() { 
+      var currentTime = date.getMinutes*60 + date.getSeconds;
+      songProgressPercent = Math.floor((currentTime-initialTime)/(this.player.trackLength*1000));
     }
   },
 
@@ -236,9 +242,9 @@ export default {
        * one, we don't want to update the DOM yet.
        */
       if (this.playerResponse.item?.id === this.playerData.trackId) {
-        var currentTime = new Date(sec * 1000);
-        var songProgressPercent = Math.floor((currentTime-initialTime)/this.player.trackLength);
         return
+      } else{
+        initialTime = (date.getMinutes*60) + date.getSeconds;
       }
 
       /**
@@ -255,7 +261,7 @@ export default {
           title: this.playerResponse.item.album.name,
           image: this.playerResponse.item.album.images[0].url
         },
-        trackLength: this.playerResponse.item.duration_ms
+        trackLength: this.playerResponse.item.duration_ms,
       }
     },
 
