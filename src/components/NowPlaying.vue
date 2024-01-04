@@ -34,9 +34,9 @@ import * as Vibrant from 'node-vibrant'
 import props from '@/utils/props.js'
 import { ref } from 'vue'
 
-var date = new Date();
-var initialTime = (date.getMinutes*60) + date.getSeconds;
-var songProgressPercent = ref(0);
+var date = new Date()
+var initialTime = date.getMinutes*60 + date.getSeconds;
+var songProgressPercent = ref(0)
 
 export default {
   name: 'NowPlaying',
@@ -66,9 +66,9 @@ export default {
       return this.player.trackArtists.join(', ')
     },
     getTrackLength() {
-      var millis = this.player.trackLength;
-      var minutes = Math.floor(millis / 60000);
-      var seconds = ((millis % 60000) / 1000).toFixed(0);
+      var millis = this.player.trackLength
+      var minutes = Math.floor(millis / 60000)
+      var seconds = ((millis % 60000) / 1000).toFixed(0)
       return (
         seconds == 60 ?
         (minutes+1) + ":00" :
