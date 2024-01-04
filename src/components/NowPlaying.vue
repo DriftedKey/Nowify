@@ -15,7 +15,7 @@
       <div class="now-playing__details">
         <h1 class="now-playing__track" v-text="player.trackTitle"></h1>
         <h2 class="now-playing__artists" v-text="getTrackArtists"></h2>
-        <h3 class="now-playing__length" v-text="getTrackLength"></h3>
+        <h3 class="now-playing__length" v-text="getTrackLength(trackLength)"></h3>
       </div>
 
       <div class="now-playing__songProgress">
@@ -61,8 +61,9 @@ export default {
       return this.player.trackArtists.join(', ')
     },
     getTrackLength() {
-      var minutes = Math.floor(trackLength / 60000);
-      var seconds = ((trackLength % 60000) / 1000).toFixed(0);
+      millis = this.player.trackLength;
+      var minutes = Math.floor(millis / 60000);
+      var seconds = ((millis % 60000) / 1000).toFixed(0);
       return (
         seconds == 60 ?
         (minutes+1) + ":00" :
