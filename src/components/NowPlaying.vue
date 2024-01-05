@@ -72,7 +72,7 @@ export default {
       var currentTime = date.getMinutes*60 + date.getSeconds;
       var remainingMinutes = (currentTime-initialTime) % 60
       var remainingSeconds = (currentTime - initialTime) - (60 * remainingMinutes)
-      var timeSoFar = String(remainingMinutes + ':' + remainingSeconds)
+      var timeSoFar = remainingMinutes + ':' + remainingSeconds
       return timeSoFar
     }
   },
