@@ -30,7 +30,6 @@ import props from '@/utils/props.js'
 
 var date = new Date()
 var initialTime = date.getMinutes * 60 + date.getSeconds
-var songProgressPercent = 0
 
 export default {
   name: 'NowPlaying',
