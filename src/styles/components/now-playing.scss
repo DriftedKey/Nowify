@@ -50,7 +50,7 @@
     }
 
   &__length {
-    width: v-bind(songProgressPercent);
+    width: 200px;
     height: 30px;
     background-color: hsl(0, 0%, 49%);
   }

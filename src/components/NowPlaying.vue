@@ -194,6 +194,7 @@ export default {
       this.pollPlaying = setInterval(() => {
         this.getNowPlaying()
       }, 2500)
+      initialTime = date.getMinutes * 60 + date.getSeconds;
     },
 
     /**
@@ -239,8 +240,6 @@ export default {
        */
       if (this.playerResponse.item?.id === this.playerData.trackId) {
         return
-      } else {
-        initialTime = date.getMinutes * 60 + date.getSeconds;
       }
 
       /**
